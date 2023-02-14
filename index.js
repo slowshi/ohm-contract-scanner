@@ -14,7 +14,7 @@ const TELEGRAM_KEY = process.env.TELEGRAM_KEY;
 const bot = new Telegraf(TELEGRAM_KEY);
 let findContractsInterval = null;
 const init = async() => {
-  console.log('Starting OHM Scanner...');
+  // console.log('Starting OHM Scanner...');
   const settings = {
     apiKey: ALCHEMY_API_KEY,
     network: Network.ARB_MAINNET,
@@ -26,7 +26,7 @@ const init = async() => {
     const latestBlock = await alchemy.core.getBlockNumber();
     for(let i = currentBlock; i <= latestBlock; i++) {
       const res = await alchemy.core.getBlockWithTransactions(i);
-      console.log('BlockID:',i);
+      // console.log('BlockID:',i);
         for (const transaction of res.transactions) {
           if (transaction?.creates !== null) {
               try {
@@ -60,13 +60,13 @@ const init = async() => {
 init();
 // Enable graceful stop
 process.once('SIGINT', () => {
-  console.log('Stopping');
+  // console.log('Stopping');
   bot.stop('SIGINT')
   clearInterval(findContractsInterval);
   process.exit(1);
 });
 process.once('SIGTERM', () => {
-  console.log('Stopping');
+  // console.log('Stopping');
   bot.stop('SIGTERM');
   clearInterval(findContractsInterval);
   process.exit(1);
