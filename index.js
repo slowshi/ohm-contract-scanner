@@ -56,7 +56,7 @@ const init = async() => {
     }
   };
   findContracts();
-  // findContractsInterval = setInterval(async ()=>{ await findContracts();}, 30000);
+  findContractsInterval = setInterval(async ()=>{ await findContracts();}, 30000);
 }
 
 init();
@@ -64,12 +64,12 @@ init();
 process.once('SIGINT', () => {
   console.log('Stopping');
   bot.stop('SIGINT')
-  // clearInterval(findContractsInterval);
+  clearInterval(findContractsInterval);
   process.exit(1);
 });
 process.once('SIGTERM', () => {
   console.log('Stopping');
   bot.stop('SIGTERM');
-  // clearInterval(findContractsInterval);
+  clearInterval(findContractsInterval);
   process.exit(1);
 });
