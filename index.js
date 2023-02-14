@@ -56,7 +56,7 @@ const init = async() => {
     }
   };
   findContracts();
-  findContractsInterval = setInterval(async ()=>{ await findContracts();}, 30000);
+  // findContractsInterval = setInterval(async ()=>{ await findContracts();}, 30000);
 }
 
 init();
