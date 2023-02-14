@@ -1,6 +1,8 @@
 'use strict'
 
-require('dotenv').config();
+try {
+  const dotenv = require('dotenv').config();
+} catch(_) {}
 const { Telegraf } = require('telegraf');
 const {abi: StakingAbi} = require('./abis/Staking.json');
 
